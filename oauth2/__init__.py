@@ -420,7 +420,7 @@ class Request(dict):
             query = base_url[4]
         query = parse_qs(query)
         for k, v in self.items():
-            query.setdefault(k, []).append(v)
+            query.setdefault(k, []).append(to_utf8_if_string(v))
         
         try:
             scheme = base_url.scheme
